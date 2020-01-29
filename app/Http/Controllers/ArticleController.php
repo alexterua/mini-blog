@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Article;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ArticleController extends Controller
 {
@@ -36,7 +38,21 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $article = new Article();
+        $article->title = $request->title;
+        $article->short_title = Str::length($request->short_title) > 20 ? Str::limit($request->short_title, 20) : $request->title;
+        $article->text = $request->text;
+        $article->author_id = rand(1, 4);
+
+        if ($request->file('img')) {
+            $path = Storage::putFile('public', $request->file('img'));
+            $url = Storage::url($path);
+            $article->img = $url;
+        }
+
+        $article->save();
+
+        return redirect()->route('index');
     }
 
     /**
@@ -47,7 +63,8 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        //
+
+//        return view('news.article', []);
     }
 
     /**

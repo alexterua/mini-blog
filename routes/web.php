@@ -11,6 +11,7 @@
 |
 */
 
-Route::get('/', 'ArticleController@index');
-Route::get('/create', 'ArticleController@create')->name('create');
-Route::get('/show/{id}', 'ArticleController@show')->name('show');
+Route::get('/', 'ArticleController@index')->name('index');
+Route::get('/article/create', 'ArticleController@create')->name('article.create');
+Route::post('/article/store', 'ArticleController@store')->name('article.store');
+Route::get('/article/{id}', 'ArticleController@show')->name('article.show');

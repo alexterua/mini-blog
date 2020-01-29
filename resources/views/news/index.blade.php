@@ -11,7 +11,7 @@
                         <p class="card-text">{{ \Illuminate\Support\Str::limit($article->text, 200) }}</p>
                     </div>
                     <div class="card-footer center">
-                        <a href="{{ route('show', ['id' => $article->id]) }}" class="btn btn-dark">Подробнее</a>
+                        <a href="{{ route('article.show', ['id' => $article->id]) }}" class="btn btn-dark">Подробнее</a>
                     </div>
                 </div>
             @endforeach
