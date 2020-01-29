@@ -12,4 +12,5 @@
 */
 
 Route::get('/', 'ArticleController@index');
+Route::get('/create', 'ArticleController@create')->name('create');
 Route::get('/show/{id}', 'ArticleController@show')->name('show');
