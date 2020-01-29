@@ -52,7 +52,7 @@ class ArticleController extends Controller
 
         $article->save();
 
-        return redirect()->route('index');
+        return redirect()->route('index')->with('success', 'Новость успешно создана!');
     }
 
     /**
@@ -63,8 +63,8 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-
-//        return view('news.article', []);
+        $article = Article::find($id);
+        return view('news.article', compact('article'));
     }
 
     /**

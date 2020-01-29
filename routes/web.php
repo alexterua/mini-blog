@@ -13,5 +13,5 @@
 
 Route::get('/', 'ArticleController@index')->name('index');
 Route::get('/article/create', 'ArticleController@create')->name('article.create');
+Route::get('/article/show/{id}', 'ArticleController@show')->name('article.show');
 Route::post('/article/store', 'ArticleController@store')->name('article.store');
-Route::get('/article/{id}', 'ArticleController@show')->name('article.show');
