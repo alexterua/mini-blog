@@ -11,11 +11,11 @@
             @method('PATCH')
             <div class="form-group">
                 <label for="title">Заголовок</label>
-                <input id="title" name="title" class="form-control" type="text" placeholder="Введите название..." required value="{{ $article->title }}">
+                <input id="title" name="title" class="form-control" type="text" placeholder="Введите название..." required value="{{ old('title') ?? $article->title ?? '' }}">
             </div>
             <div class="form-group">
                 <label for="text">Содержание новости</label>
-                <textarea class="form-control" name="text" id="text" rows="8" placeholder="Введите текст..." required>{{ $article->text }}</textarea>
+                <textarea class="form-control" name="text" id="text" rows="8" placeholder="Введите текст..." required>{{ old('text') ?? $article->text ?? '' }}</textarea>
             </div>
             <div class="form-group">
                 <label for="img">Выберите изображение</label>

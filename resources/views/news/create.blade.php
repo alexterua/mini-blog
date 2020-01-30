@@ -11,13 +11,13 @@
             <div class="form-group">
                 <label for="title">Заголовок</label>
                 <input id="title" name="title" class="form-control" type="text" placeholder="Введите название..."
-                       value="{{ $article->title ?? '' }}"
+                       value="{{ old('title') ?? $article->title ?? '' }}"
                        required>
             </div>
             <div class="form-group">
                 <label for="text">Содержание новости</label>
                 <textarea class="form-control" name="text" id="text" rows="8" placeholder="Введите текст..."
-                          required>{{ $article->text ?? '' }}</textarea>
+                          required>{{ old('text') ?? $article->text ?? '' }}</textarea>
             </div>
             <div class="form-group">
                 <label for="img">Выберите изображение</label>
