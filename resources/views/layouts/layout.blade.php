@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Миниблог</title>
+    <title>Миниблог | {{ $title }}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 </head>
@@ -13,7 +13,7 @@
     <nav class="navbar navbar-light bg-light">
         <div class="container"  style="padding-left: 3%;">
             <a class="navbar-brand navbar-center" href="/">МиниБлог</a>
-            <a href="{{ route('article.create') }}" class="btn btn-outline-dark" style="margin-right: 6%;">Создать новость</a>
+            <a href="{{ route('article.create') }}" class="btn btn-outline-success" style="margin-right: 6%;">Добавить новость</a>
         </div>
     </nav>
 

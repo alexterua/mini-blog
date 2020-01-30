@@ -75,7 +75,8 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $article = Article::find($id);
+        return view('news.edit', compact('article'));
     }
 
     /**
@@ -87,7 +88,21 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $article = Article::find($id);
+        $article->title = $request->title;
+        $article->short_title = Str::length($request->short_title) > 20 ? Str::limit($request->short_title, 20) : $request->title;
+        $article->text = $request->text;
+
+        if ($request->file('img')) {
+            $path = Storage::putFile('public', $request->file('img'));
+            $url = Storage::url($path);
+            $article->img = $url;
+        }
+
+        $article->update();
+        $id = $article->id;
+
+        return redirect()->route('article.show', compact('id'))->with('success', 'Новость успешно отредактирована!');
     }
 
     /**
@@ -98,6 +113,9 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $article = Article::find($id);
+        $article->delete();
+
+        return redirect()->route('index')->with('success', 'Пост успешно удален!');
     }
 }
