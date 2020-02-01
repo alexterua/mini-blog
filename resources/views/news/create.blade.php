@@ -1,10 +1,9 @@
-@extends('layouts.layout', ['title' => 'Создать новость'])
+{{--If you want so that work without ajax -> uncomment all comments for this view --}}
+{{--@extends('layouts.layout', ['title' => 'Создать новость'])--}}
 
-@section('content')
+{{--@section('content')--}}
     <div class="row">
         <h2 style="margin: 2px auto;">Создание новости</h2>
-    </div>
-    <div class="row">
         <form action="{{ route('article.store') }}" method="post" enctype="multipart/form-data"
               style="width: 60%; margin-left: 20%;">
             @csrf
@@ -26,4 +25,4 @@
             <button id="save" type="submit" class="btn btn-primary">Сохранить</button>
         </form>
     </div>
-@endsection
+{{--@endsection--}}

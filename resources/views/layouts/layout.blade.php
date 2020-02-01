@@ -14,7 +14,7 @@
     <nav class="navbar navbar-light bg-light">
         <div class="container"  style="padding-left: 3%;">
             <a class="navbar-brand navbar-center" href="/">МиниБлог</a>
-            <a href="{{ route('article.create') }}" class="btn btn-outline-success" id="create" style="margin-left: auto; margin-right: 1%;"><i class="fas fa-plus-circle"></i>Добавить новость</a>
+            <a href="{{ route('article.create') }}" class="btn btn-outline-success article-create" id="create" style="margin-left: auto; margin-right: 1%;"><i class="fas fa-plus-circle"></i>Добавить новость</a>
         </div>
     </nav>
 

@@ -19338,8 +19338,23 @@ $('.article-show').on('click', function (event) {
     },
     type: 'GET',
     success: function success(data) {
-      console.log(data);
       $('#content-row').html(data);
+    },
+    error: function error() {
+      alert('Ошибка Ajax!');
+    }
+  });
+});
+$('.article-create').on('click', function (event) {
+  event.preventDefault();
+  var linkURL = $(this).attr('href');
+  $.ajax({
+    url: linkURL,
+    datatype: 'html',
+    type: 'GET',
+    success: function success(data) {
+      $('#content-row').html(data);
+      $('#content-row').css('display', 'block');
     },
     error: function error() {
       alert('Ошибка Ajax!');
