@@ -19283,6 +19283,8 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./script */ "./resources/js/script.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -19314,6 +19316,36 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/script.js":
+/*!********************************!*\
+  !*** ./resources/js/script.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$('.article-show').on('click', function (event) {
+  event.preventDefault();
+  var id = $(this).data('id');
+  var linkURL = $(this).attr('href');
+  $.ajax({
+    url: linkURL,
+    datatype: 'html',
+    data: {
+      id: id
+    },
+    type: 'GET',
+    success: function success(data) {
+      console.log(data);
+      $('#content-row').html(data);
+    },
+    error: function error() {
+      alert('Ошибка Ajax!');
+    }
+  });
+});
 
 /***/ }),
 

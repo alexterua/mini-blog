@@ -1,6 +1,7 @@
-@extends('layouts.layout', ['title' => "Новость №$article->id"])
+{{--If you want so that work without ajax -> uncomment all comments for this view --}}
+{{--@extends('layouts.layout', ['title' => "Новость №$article->id"])--}}
 
-@section('content')
+{{--@section('content')--}}
     <div class="row">
         <div class="card mb-3">
             <img src="{{ $article->img ?? asset('img/test.jpg') }}" class="card-img-top" alt="{{ $article->title }}">
@@ -19,5 +20,5 @@
             </div>
         </div>
     </div>
-@endsection
+{{--@endsection--}}
 

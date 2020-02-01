@@ -23,7 +23,7 @@
                 <label for="img">Выберите изображение</label>
                 <input type="file" name="img" class="form-control-file" id="img">
             </div>
-            <button type="submit" class="btn btn-primary">Сохранить</button>
+            <button id="save" type="submit" class="btn btn-primary">Сохранить</button>
         </form>
     </div>
 @endsection
