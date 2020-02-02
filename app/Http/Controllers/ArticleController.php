@@ -46,9 +46,9 @@ class ArticleController extends Controller
         $article->author_id = rand(1, 4);
 
         if ($request->file('img')) {
-            $path = Storage::putFile('public', $request->file('img'));
-            $url = Storage::url($path);
-            $article->img = $url;
+            $filename = Str::random(20) . '.' . $request->file('img')->extension();
+            $request->file('img')->move(public_path() . '/uploads', $filename);
+            $article->img = $filename;
         }
 
         $article->save();
@@ -95,9 +95,9 @@ class ArticleController extends Controller
         $article->text = $request->text;
 
         if ($request->file('img')) {
-            $path = Storage::putFile('public', $request->file('img'));
-            $url = Storage::url($path);
-            $article->img = $url;
+            $filename = Str::random(20) . '.' . $request->file('img')->extension();
+            $request->file('img')->move(public_path() . '/uploads', $filename);
+            $article->img = $filename;
         }
 
         $article->update();
@@ -114,6 +114,7 @@ class ArticleController extends Controller
     public function destroy($id)
     {
         $article = Article::find($id);
+        Storage::delete('uploads/', $article->img);
         $article->delete();
 
         return redirect()->route('index')->with('success', 'Пост успешно удален!');

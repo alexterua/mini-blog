@@ -4,7 +4,7 @@
     <div class="row" id="content-row" style="padding-left: 3%;">
         @foreach($news as $article)
             <div class="card" style="width: 29.33%; margin-bottom: 20px; margin-right: 3%;">
-                <img src="{{ $article->img ?? asset('img/test.jpg') }}" class="card-img-top" alt="{{ $article->title }}">
+                <img src="{{ 'uploads/' . $article->img ?? asset('img/test.jpg') }}" class="card-img-top" alt="{{ $article->title }}">
                 <div class="card-body">
                     <h5 class="card-title">{{ $article->short_title }}</h5>
                     <p class="card-text">{{ \Illuminate\Support\Str::limit($article->text, 200) }}</p>
