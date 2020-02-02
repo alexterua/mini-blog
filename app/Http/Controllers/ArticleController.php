@@ -115,9 +115,9 @@ class ArticleController extends Controller
     {
         $article = Article::find($id);
 
-        /*if ($article->img !== null) {
+        if ($article->img !== null) {
             unlink(public_path('/uploads/' . $article->img));
-        }*/
+        }
 
         $article->delete();
 
