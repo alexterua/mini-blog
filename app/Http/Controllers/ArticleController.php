@@ -114,7 +114,11 @@ class ArticleController extends Controller
     public function destroy($id)
     {
         $article = Article::find($id);
-        Storage::delete('uploads/', $article->img);
+
+        /*if ($article->img !== null) {
+            unlink(public_path('/uploads/' . $article->img));
+        }*/
+
         $article->delete();
 
         return redirect()->route('index')->with('success', 'Пост успешно удален!');
