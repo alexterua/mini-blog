@@ -101,9 +101,8 @@ class ArticleController extends Controller
         }
 
         $article->update();
-        $id = $article->id;
 
-        return redirect()->route('article.show', compact('id'))->with('success', 'Новость успешно отредактирована!');
+        return redirect()->route('index')->with('success', 'Новость успешно отредактирована!');
     }
 
     /**
