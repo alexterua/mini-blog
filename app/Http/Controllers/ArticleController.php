@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Article;
 use App\Http\Requests\ArticleRequest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 class ArticleController extends Controller
 {
@@ -39,20 +37,7 @@ class ArticleController extends Controller
      */
     public function store(ArticleRequest $request)
     {
-        $article = new Article();
-        $article->title = $request->title;
-        $article->short_title = Str::length($request->short_title) > 20 ? Str::limit($request->short_title, 20) : $request->title;
-        $article->text = $request->text;
-        $article->author_id = rand(1, 4);
-
-        if ($request->file('img')) {
-            $filename = Str::random(20) . '.' . $request->file('img')->extension();
-            $request->file('img')->move(public_path() . '/uploads', $filename);
-            $article->img = $filename;
-        }
-
-        $article->save();
-
+        $article = Article::add($request);
         return redirect()->route('index')->with('success', 'Новость успешно создана!');
     }
 
@@ -87,21 +72,9 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ArticleRequest $request, $id)
+    public function update(ArticleRequest $request)
     {
-        $article = Article::find($id);
-        $article->title = $request->title;
-        $article->short_title = Str::length($request->short_title) > 20 ? Str::limit($request->short_title, 20) : $request->title;
-        $article->text = $request->text;
-
-        if ($request->file('img')) {
-            $filename = Str::random(20) . '.' . $request->file('img')->extension();
-            $request->file('img')->move(public_path() . '/uploads', $filename);
-            $article->img = $filename;
-        }
-
-        $article->update();
-
+        Article::edit();
         return redirect()->route('index')->with('success', 'Новость успешно отредактирована!');
     }
 
@@ -113,13 +86,7 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        $article = Article::find($id);
-
-        if ($article->img !== null) {
-            unlink(public_path('/uploads/' . $article->img));
-        }
-
-        $article->delete();
+        $article = Article::remove($id);
 
         return redirect()->route('index')->with('success', 'Пост успешно удален!');
     }
