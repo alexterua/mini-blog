@@ -38,7 +38,7 @@ class Article extends Model
 
     public static function remove($id)
     {
-        $article = static::find($id);
+        $article = static::getOne($id);
 
         if ($article->img !== null) {
             unlink(public_path('/uploads/' . $article->img));
